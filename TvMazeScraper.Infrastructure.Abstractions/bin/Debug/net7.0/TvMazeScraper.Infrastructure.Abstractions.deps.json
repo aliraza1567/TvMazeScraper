@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "TvMazeScraper.Infrastructure.Abstractions/1.0.0": {
+        "dependencies": {
+          "TvMaze.Domain": "1.0.0"
+        },
+        "runtime": {
+          "TvMazeScraper.Infrastructure.Abstractions.dll": {}
+        }
+      },
+      "TvMaze.Domain/1.0.0": {
+        "runtime": {
+          "TvMaze.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TvMazeScraper.Infrastructure.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TvMaze.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
