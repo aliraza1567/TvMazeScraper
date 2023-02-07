@@ -1,0 +1,8 @@
+.vs/
+TvMazeScraper.WebApi/bin/
+TvMazeScraper.WebApi/obj/
+TvMaze.Domain/obj/
+TvMazeScraper.Infrastructure.Abstractions/obj/
+TvMaze.Persistence/obj/
+TvMaze.Persistence.Abstractions/obj/
+TvMaze.Persistence/bin/

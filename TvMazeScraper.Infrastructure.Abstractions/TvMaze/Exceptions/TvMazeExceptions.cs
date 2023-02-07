@@ -1,4 +1,4 @@
-﻿namespace TvMazeScraper.Infrastructure.Abstractions.TvMaze.Exceptions
+﻿namespace TvMaze.Infrastructure.Abstractions.TvMaze.Exceptions
 {
     internal class TvMazeExceptions: Exception
     {

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using TvMazeScraper.WebApi.Contracts.Shows;
 
 namespace TvMazeScraper.WebApi.Controllers
 {
@@ -15,11 +16,10 @@ namespace TvMazeScraper.WebApi.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ShowDto))]
         public virtual Task<ActionResult> GetAll(CancellationToken cancellationToken = default)
         {
-            
+
             return Task.FromResult<ActionResult>(Ok());
         }
     }

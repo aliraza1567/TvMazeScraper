@@ -1,6 +1,6 @@
-﻿using TvMazeScraper.Infrastructure.Abstractions.TvMaze.Clients;
+﻿using TvMaze.Infrastructure.Abstractions.TvMaze.Clients;
 
-namespace TvMazeScraper.Infrastructure.Abstractions.TvMaze.Gateways
+namespace TvMaze.Infrastructure.Abstractions.TvMaze.Gateways
 {
     internal interface ITvMazeGateway
     {
