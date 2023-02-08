@@ -1,5 +1,3 @@
-
-using Microsoft.Extensions.Configuration;
 using TvMaze.Persistence;
 
 namespace TvMazeScraper.WebApi
@@ -18,6 +16,7 @@ namespace TvMazeScraper.WebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddAutoMapper(typeof(Startup).Assembly);
             builder.Services.AddCompositionRootServices(Configuration, typeof(Startup).Assembly);
 
             var app = builder.Build();

@@ -36,7 +36,7 @@ namespace TvMaze.Persistence.Migrations
                     b.Property<string>("OfficialSite")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TvMazeId")
+                    b.Property<int>("ShowId")
                         .HasColumnType("int");
 
                     b.Property<string>("Url")
