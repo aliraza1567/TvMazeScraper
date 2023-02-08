@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using TvMaze.Application.Abstractions.Services.Shows;
 
@@ -16,7 +14,8 @@ namespace TvMaze.Application.Worker
             _logger = logger;
             _serviceProvider = serviceProvider;
         }
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+
+        protected override Task ExecuteAsync(CancellationToken stoppingToken) => Task.Run(async () =>
         {
             _logger.LogInformation("DataScraperHostedService is starting.");
 
@@ -33,11 +32,11 @@ namespace TvMaze.Application.Worker
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                _logger.LogError($"DataScraperHostedService, Exception: {e}");
                 throw;
             }
 
-            
-        }
+
+        }, stoppingToken);
     }
 }

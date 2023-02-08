@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using TvMaze.Application.Abstractions.Services.Shows;
-using TvMaze.Application.Worker;
 
 namespace TvMazeScraper.WebApi.Controllers
 {
