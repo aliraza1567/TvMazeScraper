@@ -1,6 +1,6 @@
 ﻿namespace TvMaze.Infrastructure.Abstractions.TvMaze.Exceptions
 {
-    internal class TvMazeExceptions: Exception
+    public class TvMazeExceptions: Exception
     {
         public TvMazeExceptions()
         {

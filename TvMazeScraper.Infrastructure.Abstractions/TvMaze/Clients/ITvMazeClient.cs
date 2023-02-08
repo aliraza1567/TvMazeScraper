@@ -4,6 +4,6 @@ namespace TvMaze.Infrastructure.Abstractions.TvMaze.Clients
 {
     public interface ITvMazeClient
     {
-        Task<Show> GetAllShowsAsync(CancellationToken cancellationToken = default);
+        Task<List<Show>> GetAllShowsAsync(CancellationToken cancellationToken = default);
     }
 }

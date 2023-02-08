@@ -11,3 +11,5 @@ TvMaze.Application.Abstractions/obj/Debug/net7.0/TvMaze.Application.Abstractions
 TvMaze.Application.Abstractions/obj/
 TvMaze.Application.Abstractions/bin/
 TvMaze.Application/bin/
+TvMaze.External/obj/
+TvMaze.External/bin/

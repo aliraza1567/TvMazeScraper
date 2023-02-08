@@ -2,7 +2,7 @@
 
 namespace TvMaze.Infrastructure.Abstractions.TvMaze.Gateways
 {
-    internal interface ITvMazeGateway
+    public interface ITvMazeGateway
     {
         Task<ITvMazeClient> GetTvMazeClientAsync(CancellationToken cancellationToken = default);
     }

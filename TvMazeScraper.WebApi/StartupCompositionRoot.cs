@@ -11,6 +11,7 @@ namespace TvMazeScraper.WebApi
             //services.AddScoped(typeof(IMessageSender), typeof(MessageSender));
             //Application
             TvMaze.Application.Startup.ConfigureServices(services, configuration);
+            TvMaze.External.Startup.ConfigureServices(services, configuration);
             //Infrastructure.Startup.ConfigureServices(services, configuration);
             TvMaze.Persistence.Startup.ConfigureServices(services, configuration);
             //MessageBroker.Startup.ConfigureServices(services, configuration);

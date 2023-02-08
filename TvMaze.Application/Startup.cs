@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TvMaze.Application.Abstractions.Services.Shows;
+using TvMaze.Application.Gateways;
 using TvMaze.Application.Services;
+using TvMaze.Infrastructure.Abstractions.TvMaze.Gateways;
 
 namespace TvMaze.Application
 {
@@ -17,6 +19,9 @@ namespace TvMaze.Application
         {
             //Services
             services.AddScoped(typeof(IShowsService), typeof(ShowsService));
+
+            //Gateways
+            services.AddScoped(typeof(ITvMazeGateway), typeof(TvMazeGateway));
         }
     }
 }
