@@ -1,5 +1,4 @@
-﻿using System.Net.Sockets;
-using TvMaze.Domain.Persistence;
+﻿using TvMaze.Domain.Persistence;
 
 namespace TvMaze.Domain.Models
 {

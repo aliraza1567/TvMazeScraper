@@ -23,6 +23,9 @@ namespace TvMaze.Application.Services
         public async Task<Show> GetByShowIdAsync(int showId, CancellationToken cancellationToken)
         {
             var result = await _showsRepository.SingleOrDefaultAsync(show => show.ShowId == showId, cancellationToken);
+
+            result.Casts = result.Casts.OrderByDescending(cast => cast.Birthday).ToList();
+
             return result;
         }
 
@@ -44,7 +47,14 @@ namespace TvMaze.Application.Services
             };
 
             var entityListResponse = await _showsRepository.ListAsync(findRequest, cancellationToken);
-            return entityListResponse.Results.ToList();
+            var allShows = entityListResponse.Results.ToList();
+
+            allShows.ForEach(show =>
+            {
+                show.Casts = show.Casts.OrderByDescending(cast => cast.Birthday).ToList();
+            });
+
+            return allShows;
         }
     }
 }

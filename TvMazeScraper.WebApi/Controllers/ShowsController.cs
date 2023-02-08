@@ -1,9 +1,6 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using TvMaze.Application.Abstractions.Services.Shows;
-using TvMaze.Domain.Models;
-using TvMaze.Domain.Persistence;
 using TvMazeScraper.WebApi.Contracts.Shows;
 
 namespace TvMazeScraper.WebApi.Controllers

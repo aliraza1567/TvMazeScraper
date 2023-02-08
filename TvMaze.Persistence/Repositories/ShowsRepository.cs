@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TvMaze.Domain.Models;
-using TvMaze.Domain.Persistence;
 using TvMaze.Persistence.Abstractions.Repositories;
 using TvMaze.Persistence.EntityFramework;
 
