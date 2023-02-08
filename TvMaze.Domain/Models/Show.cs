@@ -1,8 +1,10 @@
-﻿namespace TvMaze.Domain.Models
+﻿using TvMaze.Domain.Persistence;
+
+namespace TvMaze.Domain.Models
 {
-    public class Show
+    public class Show : IEntity<Guid>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public int TvMazeId { get; set; }
         public string Url { get; set; }
         public string Name { get; set; }

@@ -6,3 +6,8 @@ TvMazeScraper.Infrastructure.Abstractions/obj/
 TvMaze.Persistence/obj/
 TvMaze.Persistence.Abstractions/obj/
 TvMaze.Persistence/bin/
+TvMaze.Application/obj/
+TvMaze.Application.Abstractions/obj/Debug/net7.0/TvMaze.Application.Abstractions.csproj.CopyComplete
+TvMaze.Application.Abstractions/obj/
+TvMaze.Application.Abstractions/bin/
+TvMaze.Application/bin/

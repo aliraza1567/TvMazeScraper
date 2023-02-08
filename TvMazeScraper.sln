@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Persistence", "TvMaz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Persistence.Abstractions", "TvMaze.Persistence.Abstractions\TvMaze.Persistence.Abstractions.csproj", "{06F03243-4E51-4302-9D85-7D49EF96F3C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Application", "TvMaze.Application\TvMaze.Application.csproj", "{3259FF25-1B97-43EF-9AAF-F2F6873C8767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Application.Abstractions", "TvMaze.Application.Abstractions\TvMaze.Application.Abstractions.csproj", "{660383E2-429B-4B82-9B3D-7AE18A38B040}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,14 @@ Global
 		{06F03243-4E51-4302-9D85-7D49EF96F3C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06F03243-4E51-4302-9D85-7D49EF96F3C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06F03243-4E51-4302-9D85-7D49EF96F3C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3259FF25-1B97-43EF-9AAF-F2F6873C8767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3259FF25-1B97-43EF-9AAF-F2F6873C8767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3259FF25-1B97-43EF-9AAF-F2F6873C8767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3259FF25-1B97-43EF-9AAF-F2F6873C8767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{660383E2-429B-4B82-9B3D-7AE18A38B040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{660383E2-429B-4B82-9B3D-7AE18A38B040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{660383E2-429B-4B82-9B3D-7AE18A38B040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{660383E2-429B-4B82-9B3D-7AE18A38B040}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +72,8 @@ Global
 		{F5070884-F094-4612-9641-9E02ABE84145} = {F24DF618-C67F-432D-B756-2F5F78D481DF}
 		{976BB033-5EB8-4E8E-B381-3C55E75E5F80} = {09B38E55-6317-4F09-9B24-AD714ED06C32}
 		{06F03243-4E51-4302-9D85-7D49EF96F3C3} = {F7009165-1C99-41AA-85ED-44735C6AE0FB}
+		{3259FF25-1B97-43EF-9AAF-F2F6873C8767} = {05E4CAF5-5AC3-446F-B0A7-AD380D7243AC}
+		{660383E2-429B-4B82-9B3D-7AE18A38B040} = {F7009165-1C99-41AA-85ED-44735C6AE0FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB599B07-B7F8-47F3-A81B-293256F6B011}

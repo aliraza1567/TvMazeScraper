@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TvMaze.Application.Abstractions\TvMaze.Application.Abstractions.csproj" />
+    <ProjectReference Include="..\TvMaze.Application\TvMaze.Application.csproj" />
     <ProjectReference Include="..\TvMaze.Persistence\TvMaze.Persistence.csproj" />
   </ItemGroup>
 

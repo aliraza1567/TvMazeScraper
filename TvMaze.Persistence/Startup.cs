@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TvMaze.Persistence.Abstractions.Repositories;
 using TvMaze.Persistence.EntityFramework;
+using TvMaze.Persistence.Repositories;
 
 namespace TvMaze.Persistence
 {
@@ -9,7 +11,7 @@ namespace TvMaze.Persistence
     {
         public static void ConfigureServices(IServiceCollection services, IConfiguration? configuration)
         {
-            //services.AddScoped<IConfigurationRepository, ConfigurationEfRepository>();
+            services.AddScoped<IShowsRepository, ShowsRepository>();
             //services.AddScoped<IMessageRepository, MessageEfRepository>();
             //services.AddScoped<ITicketRepository, TicketEfRepository>();
             //services.AddScoped<IPincodeRepository, PincodeEfRepository>();
