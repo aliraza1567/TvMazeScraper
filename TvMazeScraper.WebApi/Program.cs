@@ -1,3 +1,5 @@
+using NLog;
+using NLog.Web;
 using TvMaze.Persistence;
 
 namespace TvMazeScraper.WebApi
@@ -7,36 +9,58 @@ namespace TvMazeScraper.WebApi
         public static IConfiguration? Configuration { get; set; }
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
-            Configuration = builder.Configuration;
+            var logger = LogManager.GetCurrentClassLogger();
 
-            // Add services to the container.
+            logger.Info("TvMazeScraper Web Api is booting up");
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            builder.Services.AddAutoMapper(typeof(Startup).Assembly);
-            builder.Services.AddCompositionRootServices(Configuration, typeof(Startup).Assembly);
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            try
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                var builder = WebApplication.CreateBuilder(args);
+                Configuration = builder.Configuration;
+
+                // Add services to the container.
+
+                builder.Services.AddControllers();
+
+                //Configure NLog
+                builder.Logging.ClearProviders();
+                builder.Host.UseNLog();
+
+
+                // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+                builder.Services.AddEndpointsApiExplorer();
+                builder.Services.AddSwaggerGen();
+                builder.Services.AddAutoMapper(typeof(Startup).Assembly);
+                builder.Services.AddCompositionRootServices(Configuration, typeof(Startup).Assembly);
+
+                var app = builder.Build();
+
+                // Configure the HTTP request pipeline.
+                if (app.Environment.IsDevelopment())
+                {
+                    app.UseSwagger();
+                    app.UseSwaggerUI();
+                }
+
+                app.UseHttpsRedirection();
+
+                app.UseAuthorization();
+
+
+                app.MapControllers();
+
+                app.Run();
             }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.Run();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                logger.Fatal($"Exception starting up TvMazeScraper Web Api, Exception: {ex}");
+                throw;
+            }
+            finally
+            {
+                LogManager.Shutdown();
+            }
         }
-
     }
 }

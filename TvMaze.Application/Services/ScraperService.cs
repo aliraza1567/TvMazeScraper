@@ -22,13 +22,17 @@ public class ScraperService : IScraperService
         var mazeClient = await _tvMazeGateway.GetTvMazeClientAsync(cancellationToken);
         var allShows = await mazeClient.GetAllShowsAsync(cancellationToken);
 
-
         var entityInsertRequest = new EntityInsertRequest<Show>
         {
             EntitiesToInsert = allShows
         };
 
         await _showsRepository.BulkInsertAsync(entityInsertRequest, cancellationToken);
+
+        foreach (var show in allShows.Take(10))
+        {
+            var castList = await mazeClient.GetCastByShowIdAsync(show.ShowId, cancellationToken);
+        }
 
         return true;
     }

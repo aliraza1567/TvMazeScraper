@@ -5,6 +5,7 @@ using TvMaze.Domain.Models;
 using TvMaze.Infrastructure.Abstractions.TvMaze.Clients;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using TvMaze.External.Clients.Contracts.Cast;
 using TvMaze.External.Clients.Contracts.Show;
 using TvMaze.External.Exceptions;
 
@@ -33,6 +34,21 @@ namespace TvMaze.External.Clients
                 var showDtos = await SendRequestAsync<List<ShowDto>>(HttpMethod.Get, "shows", null, cancellationToken);
                 var shows = _mapper.Map<List<Show>>(showDtos);
                 return shows;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task<List<Cast>> GetCastByShowIdAsync(int showId, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var castDtos = await SendRequestAsync<List<CastDto>>(HttpMethod.Get, $"shows/{showId}/cast", null, cancellationToken);
+                var castList = _mapper.Map<List<Cast>>(castDtos);
+                return castList;
             }
             catch (Exception e)
             {

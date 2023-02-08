@@ -12,11 +12,8 @@ namespace TvMaze.Persistence
         public static void ConfigureServices(IServiceCollection services, IConfiguration? configuration)
         {
             services.AddScoped<IShowsRepository, ShowsRepository>();
-            //services.AddScoped<IMessageRepository, MessageEfRepository>();
-            //services.AddScoped<ITicketRepository, TicketEfRepository>();
-            //services.AddScoped<IPincodeRepository, PincodeEfRepository>();
-            //services.AddScoped<ICounterRepository, CounterEfRepository>();
-            //services.AddScoped<IPharmacyRepository, PharmacyEfRepository>();
+            services.AddScoped<ICastsRepository, CastRepository>();
+
 
             services.AddDbContext<TvMazeDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("TvMazeDbConnection"),
                 o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery)));

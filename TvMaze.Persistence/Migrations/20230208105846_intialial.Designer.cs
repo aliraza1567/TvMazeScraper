@@ -12,7 +12,7 @@ using TvMaze.Persistence.EntityFramework;
 namespace TvMaze.Persistence.Migrations
 {
     [DbContext(typeof(TvMazeDbContext))]
-    [Migration("20230208082936_intialial")]
+    [Migration("20230208105846_intialial")]
     partial class intialial
     {
         /// <inheritdoc />
@@ -37,14 +37,12 @@ namespace TvMaze.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OfficialSite")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TvMazeId")
+                    b.Property<int>("ShowId")
                         .HasColumnType("int");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
