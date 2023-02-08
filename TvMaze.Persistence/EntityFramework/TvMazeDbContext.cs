@@ -13,15 +13,8 @@ namespace TvMaze.Persistence.EntityFramework
         }
 
         public DbSet<Show> Shows { get; set; }
-        //public DbSet<Country> Countries { get; set; }
-        //public DbSet<External> Externals { get; set; }
-        //public DbSet<Image> Images { get; set; }
-        //public DbSet<Link> Links { get; set; }
-        //public DbSet<Network> Networks { get; set; }
-        //public DbSet<PreviousEpisode> PreviousEpisodes { get; set; }
-        //public DbSet<Rating> Ratings { get; set; }
-        //public DbSet<Schedule> Schedules { get; set; }
-        //public DbSet<Self> Selves { get; set; }
+        public DbSet<Cast> Casts { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

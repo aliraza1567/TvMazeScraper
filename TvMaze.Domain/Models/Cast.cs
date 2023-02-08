@@ -1,4 +1,5 @@
-﻿using TvMaze.Domain.Persistence;
+﻿using System.Net.Sockets;
+using TvMaze.Domain.Persistence;
 
 namespace TvMaze.Domain.Models
 {
@@ -9,5 +10,6 @@ namespace TvMaze.Domain.Models
         public string Name { get; set; }
         public DateTimeOffset? Birthday { get; set; }
         public string CharacterName { get; set; }
+        public Show Show { get; set; }
     }
 }

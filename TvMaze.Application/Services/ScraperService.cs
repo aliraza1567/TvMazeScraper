@@ -27,12 +27,16 @@ public class ScraperService : IScraperService
             EntitiesToInsert = allShows
         };
 
-        await _showsRepository.BulkInsertAsync(entityInsertRequest, cancellationToken);
-
-        foreach (var show in allShows.Take(10))
+        foreach (var show in allShows)
         {
             var castList = await mazeClient.GetCastByShowIdAsync(show.ShowId, cancellationToken);
+
+            Thread.Sleep(1000);
+
+            show.Casts = castList;
         }
+
+        await _showsRepository.BulkInsertAsync(entityInsertRequest, cancellationToken);
 
         return true;
     }

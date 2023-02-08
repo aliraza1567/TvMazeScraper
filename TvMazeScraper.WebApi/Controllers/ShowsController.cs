@@ -1,13 +1,16 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using TvMaze.Application.Abstractions.Services.Shows;
+using TvMaze.Domain.Models;
+using TvMaze.Domain.Persistence;
 using TvMazeScraper.WebApi.Contracts.Shows;
 
 namespace TvMazeScraper.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ShowsController : ControllerBase
+    public class ShowsController : BaseController
     {
         private readonly ILogger<ShowsController> _logger;
         private readonly IShowsService _showsService;
@@ -20,18 +23,22 @@ namespace TvMazeScraper.WebApi.Controllers
 
         [HttpGet("GetAllShows")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(List<ShowDto>))]
-        public virtual Task<ActionResult> GetAll(CancellationToken cancellationToken = default)
+        public virtual async Task<ActionResult> GetAll(CancellationToken cancellationToken = default)
         {
+            var showEntity = await _showsService.GetAll(cancellationToken);
 
-            return Task.FromResult<ActionResult>(Ok());
+            var result = Mapper.Map<IList<ShowDto>>(showEntity);
+            return Ok(result);
         }
 
-        [HttpGet("GetShowById")]
+        [HttpGet("GetByShowId")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ShowDto))]
-        public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Get(int showId, CancellationToken cancellationToken = default)
         {
-            var show = await _showsService.GetAsync(id, cancellationToken);
-            return Ok(show);
+            var showEntity = await _showsService.GetByShowIdAsync(showId, cancellationToken);
+
+            var result = Mapper.Map<ShowDto>(showEntity);
+            return Ok(result);
         }
     }
 }

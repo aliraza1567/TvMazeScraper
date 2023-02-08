@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TvMaze.Domain.Models;
 using TvMazeScraper.WebApi.Contracts.Shows;
 
 namespace TvMazeScraper.WebApi.Mappings
@@ -7,7 +8,7 @@ namespace TvMazeScraper.WebApi.Mappings
     {
         public ShowMappings()
         {
-            CreateMap<ShowDto, TvMaze.Domain.Models.Show>();
+            CreateMap<Show, ShowDto>();
         }
     }
 }

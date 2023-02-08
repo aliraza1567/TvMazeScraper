@@ -37,7 +37,7 @@ namespace TvMaze.External.Clients
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                _logger.LogError($"Error While Getting All Show, Exception: {e}");
                 throw;
             }
         }
@@ -52,7 +52,7 @@ namespace TvMaze.External.Clients
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                _logger.LogError($"Error While GetShow by Id, Exception: {e}");
                 throw;
             }
         }
