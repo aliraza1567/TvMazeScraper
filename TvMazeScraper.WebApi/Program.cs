@@ -1,5 +1,8 @@
 using NLog;
 using NLog.Web;
+using TvMaze.Application.Abstractions.Services.Shows;
+using TvMaze.Application.Services;
+using TvMaze.Application.Worker;
 using TvMaze.Persistence;
 
 namespace TvMazeScraper.WebApi
@@ -33,6 +36,10 @@ namespace TvMazeScraper.WebApi
 
                 builder.Services.AddAutoMapper(typeof(Program).Assembly);
                 builder.Services.AddCompositionRootServices(Configuration, typeof(Startup).Assembly);
+
+                //HostedService
+                //builder.Services.AddHostedService<DataScraperHostedService>();
+               
 
                 var app = builder.Build();
 
