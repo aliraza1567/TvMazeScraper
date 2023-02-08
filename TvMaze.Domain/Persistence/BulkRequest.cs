@@ -21,13 +21,9 @@ namespace TvMaze.Domain.Persistence
 
         public bool OnlyCount { get; set; }
 
-        public EntityListRequest(Expression<Func<TEntity, object>> sortField, SortDirectionEnum sortDirection)
+        public EntityListRequest()
         {
-            DefaultSortItem = new SortItem<TEntity>()
-            {
-                SortDirection = sortDirection,
-                SortField = sortField
-            };
+            
         }
 
     }

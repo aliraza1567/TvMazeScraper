@@ -2,8 +2,7 @@
 
 namespace TvMaze.Domain.Persistence
 {
-    public class SortingOptions<TEntity>
-        where TEntity : class, IEntity
+    public class SortingOptions<TEntity> where TEntity : class, IEntity
     {
         public SortingOptions()
         {
