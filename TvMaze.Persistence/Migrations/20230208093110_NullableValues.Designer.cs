@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TvMaze.Persistence.EntityFramework;
 
@@ -11,9 +12,11 @@ using TvMaze.Persistence.EntityFramework;
 namespace TvMaze.Persistence.Migrations
 {
     [DbContext(typeof(TvMazeDbContext))]
-    partial class TvMazeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230208093110_NullableValues")]
+    partial class NullableValues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
