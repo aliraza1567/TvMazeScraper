@@ -19,6 +19,7 @@ namespace TvMaze.Application
         {
             //Services
             services.AddScoped(typeof(IShowsService), typeof(ShowsService));
+            services.AddScoped(typeof(IScraperService), typeof(ScraperService));
 
             //Gateways
             services.AddScoped(typeof(ITvMazeGateway), typeof(TvMazeGateway));

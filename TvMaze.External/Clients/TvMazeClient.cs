@@ -34,9 +34,9 @@ namespace TvMaze.External.Clients
         {
             try
             {
-                var ticketQueuesDto = await SendRequestAsync<ShowDto>(HttpMethod.Get, "shows", null, cancellationToken);
-                var ticketQueues = _mapper.Map<List<Show>>(ticketQueuesDto);
-                return ticketQueues;
+                var showDtos = await SendRequestAsync<List<ShowDto>>(HttpMethod.Get, "shows", null, cancellationToken);
+                var shows = _mapper.Map<List<Show>>(showDtos);
+                return shows;
             }
             catch (Exception e)
             {

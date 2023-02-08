@@ -13,7 +13,9 @@ namespace TvMaze.External.Mappings
     {
         public TvMazeExternalProfile()
         {
-            CreateMap<ShowDto, Show>();
+            CreateMap<ShowDto, Show>()
+                .ForMember(show => show.TvMazeId, expression => expression.MapFrom(dto => dto.Id))
+                .ForMember(show => show.Id, expression => expression.Ignore());
         }
     }
 }

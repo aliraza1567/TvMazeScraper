@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TvMaze.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class intial : Migration
+    public partial class intialial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,13 +19,6 @@ namespace TvMaze.Persistence.Migrations
                     TvMazeId = table.Column<int>(type: "int", nullable: false),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Language = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Runtime = table.Column<int>(type: "int", nullable: false),
-                    AverageRuntime = table.Column<int>(type: "int", nullable: false),
-                    Premiered = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Ended = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OfficialSite = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

@@ -24,9 +24,9 @@ namespace TvMaze.Application.Services
 
         public async Task<Show> GetAsync(Guid id, CancellationToken cancellationToken)
         {
-            var mazeClient = await _tvMazeGateway.GetTvMazeClientAsync(cancellationToken);
+            //var mazeClient = await _tvMazeGateway.GetTvMazeClientAsync(cancellationToken);
 
-            var shows = await mazeClient.GetAllShowsAsync(cancellationToken);
+            //var shows = await mazeClient.GetAllShowsAsync(cancellationToken);
 
             var show = await _showsRepository.GetAsync(id, cancellationToken);
             return show;
