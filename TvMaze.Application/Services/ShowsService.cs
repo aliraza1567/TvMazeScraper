@@ -30,24 +30,9 @@ namespace TvMaze.Application.Services
             return result;
         }
 
-        public async Task<IList<Show>> GetAllWithCastSortedAsync(CancellationToken cancellationToken)
+        public async Task<IList<Show>> GetAllWithCastSortedAsync(EntityListRequest<Show> listRequest, CancellationToken cancellationToken)
         {
-            var findRequest = new EntityListRequest<Show>
-            {
-                Sorting = new SortingOptions<Show>
-                {
-                    SortItems = new List<SortItem<Show>>
-                    {
-                        new()
-                        {
-                            SortField = show => show.ShowId,
-                            SortDirection = SortDirectionEnum.Descending
-                        }
-                    }
-                }
-            };
-
-            var entityListResponse = await _showsRepository.ListAsync(findRequest, cancellationToken);
+           var entityListResponse = await _showsRepository.ListAsync(listRequest, cancellationToken);
             var allShows = entityListResponse.Results.ToList();
 
             allShows.ForEach(show =>
@@ -60,22 +45,9 @@ namespace TvMaze.Application.Services
 
         public async Task<IList<Show>> GetAllShowAsync(CancellationToken cancellationToken)
         {
-            var findRequest = new EntityListRequest<Show>
-            {
-                Sorting = new SortingOptions<Show>
-                {
-                    SortItems = new List<SortItem<Show>>
-                    {
-                        new()
-                        {
-                            SortField = show => show.ShowId,
-                            SortDirection = SortDirectionEnum.Descending
-                        }
-                    }
-                }
-            };
+            var listRequest = new EntityListRequest<Show>(e => e.ShowId, SortDirectionEnum.Ascending);
 
-            var entityListResponse = await _showsRepository.ListAsync(findRequest, cancellationToken);
+            var entityListResponse = await _showsRepository.ListAsync(listRequest, cancellationToken);
             var allShows = entityListResponse.Results.ToList();
 
             return allShows;

@@ -3,6 +3,7 @@
     public class PagingOptions
     {
         public static PagingOptions Empty = new PagingOptions();
+
         public PagingOptions()
         {
             SkipCount = 0;

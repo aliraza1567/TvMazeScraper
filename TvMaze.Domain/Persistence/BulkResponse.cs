@@ -1,21 +1,16 @@
 ﻿namespace TvMaze.Domain.Persistence
 {
-    public abstract class BulkResponse<TEntity>
-        where TEntity : class, IEntity
+    public abstract class BulkResponse<TEntity> where TEntity : class, IEntity
     {
-
         public BulkResponse(IEnumerable<TEntity> results)
         {
             Results = results ?? new List<TEntity>();
             ResultCount = Results?.Count() ?? 0;
         }
 
-
         public IEnumerable<TEntity> Results { get; }
-
         public bool Any() => Results.Any();
         public int ResultCount { get; set; }
-
     }
 
     public class EntityListResponse<TEntity> : BulkResponse<TEntity> where TEntity : class, IEntity
@@ -42,7 +37,6 @@
             SkippedResultCount = skippedResultCount;
             OnlyCount = true;
         }
-
     }
 
     public class EntityUpdateResponse<TEntity> : BulkResponse<TEntity> where TEntity : class, IEntity
@@ -52,18 +46,15 @@
         public EntityUpdateResponse(IEnumerable<TEntity> results) : base(results)
         {
         }
-
     }
 
     public class EntityDeleteResponse<TEntity> : BulkResponse<TEntity> where TEntity : class, IEntity
     {
         public static EntityDeleteResponse<TEntity> Empty = new EntityDeleteResponse<TEntity>(new List<TEntity>());
 
-
         public EntityDeleteResponse(IEnumerable<TEntity> results) : base(results)
         {
         }
-
     }
 
     public class EntityInsertResponse<TEntity> : BulkResponse<TEntity> where TEntity : class, IEntity
@@ -74,5 +65,4 @@
         {
         }
     }
-
 }

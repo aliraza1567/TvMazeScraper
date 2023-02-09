@@ -6,7 +6,6 @@ namespace TvMaze.Persistence.EntityFramework
     {
         IQueryable<TEntity> GetQueryForResults<TEntity>(BulkRequest<TEntity> request, IQueryable<TEntity> queryable) where TEntity : class, IEntity;
         IQueryable<TEntity> GetQueryForTotalResults<TEntity>(BulkRequest<TEntity> request, IQueryable<TEntity> queryable) where TEntity : class, IEntity;
-        IQueryable<TEntity> GetQueryForResults<TEntity>(EntityFindRequest<TEntity> request, IQueryable<TEntity> queryable) where TEntity : class, IEntity;
     }
 
 }

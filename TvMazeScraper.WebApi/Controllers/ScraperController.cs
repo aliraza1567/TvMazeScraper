@@ -19,6 +19,7 @@ namespace TvMazeScraper.WebApi.Controllers
 
         [HttpGet("DirectScraping")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> DirectScraping(CancellationToken cancellationToken = default)
         {
             var isSuccess = await _scraperService.ShowAndCastScraperAsync(cancellationToken);

@@ -1,17 +1,20 @@
-﻿using TvMaze.Application.Abstractions.Services.Shows;
+﻿using Microsoft.Extensions.Logging;
+using TvMaze.Application.Abstractions.Services.Shows;
 using TvMaze.Infrastructure.Abstractions.TvMaze.Gateways;
 
 namespace TvMaze.Application.Services;
 
 public class ScraperService : IScraperService
 {
+    private readonly ILogger<ScraperService> _logger;
     private readonly ITvMazeGateway _tvMazeGateway;
     private readonly IShowsService _showsService;
 
-    public ScraperService(ITvMazeGateway tvMazeGateway, IShowsService showsService)
+    public ScraperService(ITvMazeGateway tvMazeGateway, IShowsService showsService, ILogger<ScraperService> logger)
     {
         _tvMazeGateway = tvMazeGateway;
         _showsService = showsService;
+        _logger = logger;
     }
 
     public async Task<bool> ShowAndCastScraperAsync(CancellationToken cancellationToken)
@@ -33,8 +36,16 @@ public class ScraperService : IScraperService
             show.Casts = castList;
         }
 
-        var insertResponse = await _showsService.SaveShowsAsync(allShows, cancellationToken);
+        try
+        {
+            await _showsService.SaveShowsAsync(allShows, cancellationToken);
+        }
+        catch (Exception e)
+        {
+            _logger.LogCritical($"Error while saving data, Exception: {e}");
+            return false;
+        }
 
-        return insertResponse.Any();
+        return true;
     }
 }

@@ -1,6 +1,8 @@
 using NLog;
 using NLog.Web;
 using TvMaze.Persistence;
+using TvMazeScraper.WebApi.Queries;
+using TvMazeScraper.WebApi.Queries.Shows;
 
 namespace TvMazeScraper.WebApi
 {
@@ -31,15 +33,19 @@ namespace TvMazeScraper.WebApi
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
 
+                
                 builder.Services.AddAutoMapper(typeof(Program).Assembly);
                 builder.Services.AddCompositionRootServices(Configuration, typeof(Startup).Assembly);
 
                 //HostedService
                 //builder.Services.AddHostedService<DataScraperHostedService>();
 
+                builder.Services.AddQueryBuilders(Configuration);
+
 
                 var app = builder.Build();
 
+                
                 // Configure the HTTP request pipeline.
                 if (app.Environment.IsDevelopment())
                 {

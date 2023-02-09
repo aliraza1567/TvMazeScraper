@@ -1,5 +1,4 @@
 using System.Data;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -25,7 +24,7 @@ namespace TvMaze.Persistence.EntityFramework
 
         public Task<IDbContextTransaction> BeginTransactionAsync(IsolationLevel isolationLevel, CancellationToken cancellationToken)
         {
-            return DbContext.Database.BeginTransactionAsync(isolationLevel, cancellationToken);
+            return DbContext.Database.BeginTransactionAsync(cancellationToken);
         }
 
         public async Task SaveChangesAsync(CancellationToken cancellationToken)
@@ -39,20 +38,6 @@ namespace TvMaze.Persistence.EntityFramework
                 DbContext.ChangeTracker.Clear();
                 var message = string.Join(", ", ex.Message, ex.InnerException?.Message);
                 throw new RepositoryException($"SaveChangesAsync failed. Message: {message}", ex);
-            }
-        }
-
-        public async Task ExecuteScriptAsync(string sqlScript, SqlParameter[] sqlParameters, CancellationToken cancellationToken)
-        {
-            try
-            {
-                await DbContext.Database.ExecuteSqlRawAsync(sqlScript, sqlParameters, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                DbContext.ChangeTracker.Clear();
-                var message = string.Join(", ", ex.Message, ex.InnerException?.Message);
-                throw new RepositoryException($"ExecuteScriptAsync failed. Message: {message}", ex);
             }
         }
 

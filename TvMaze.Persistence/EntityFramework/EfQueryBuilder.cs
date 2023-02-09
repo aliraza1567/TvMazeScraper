@@ -41,17 +41,6 @@ namespace TvMaze.Persistence.EntityFramework
 
             if (request.Paging.HasPagingOptions)
             {
-                if (!request.Sorting.HasSortingOptions)
-                {
-                    if (request.DefaultSortItem.SortDirection == SortDirectionEnum.Ascending)
-                    {
-                        query = query.OrderBy(request.DefaultSortItem.SortField);
-                    }
-                    else
-                    {
-                        query = query.OrderByDescending(request.DefaultSortItem.SortField);
-                    }
-                }
 
                 if (request.Paging.SkipCount > 0)
                 {
@@ -76,35 +65,5 @@ namespace TvMaze.Persistence.EntityFramework
 
             return query;
         }
-
-        public IQueryable<TEntity> GetQueryForResults<TEntity>(EntityFindRequest<TEntity> request, IQueryable<TEntity> query) where TEntity : class, IEntity
-        {
-            if (request.Where != null)
-            {
-                query = query.Where(request.Where);
-            }
-            if (request.Sorting.HasSortingOptions)
-            {
-                for (var sortItemCount = 0; sortItemCount < request.Sorting.SortItems.Count; sortItemCount++)
-                {
-                    var sortItem = request.Sorting.SortItems[sortItemCount];
-                    if (sortItem.SortDirection == SortDirectionEnum.Ascending)
-                    {
-                        query = sortItemCount == 0
-                            ? query.OrderBy(sortItem.SortField)
-                            : ((IOrderedQueryable<TEntity>)query).ThenBy(sortItem.SortField);
-                    }
-                    else
-                    {
-                        query = sortItemCount == 0
-                            ? query.OrderByDescending(sortItem.SortField)
-                            : ((IOrderedQueryable<TEntity>)query).ThenByDescending(
-                                sortItem.SortField);
-                    }
-                }
-            }
-            return query;
-        }
     }
-
 }

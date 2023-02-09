@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using TvMaze.Application.Abstractions.Services.Shows;
 using TvMazeScraper.WebApi.Contracts.Shows;
+using TvMazeScraper.WebApi.Queries.Shows;
 
 namespace TvMazeScraper.WebApi.Controllers
 {
@@ -11,19 +12,26 @@ namespace TvMazeScraper.WebApi.Controllers
     {
         private readonly ILogger<ShowsController> _logger;
         private readonly IShowsService _showsService;
+        private readonly IShowsQueryBuilder _showsQueryBuilder;
 
-        public ShowsController(ILogger<ShowsController> logger, IShowsService showsService)
+        public ShowsController(ILogger<ShowsController> logger, IShowsService showsService, IShowsQueryBuilder showsQueryBuilder)
         {
             _logger = logger;
             _showsService = showsService;
+            _showsQueryBuilder = showsQueryBuilder;
         }
 
         [HttpGet("GetAllShows")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(List<ShowDto>))]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public virtual async Task<ActionResult> GetAll(CancellationToken cancellationToken = default)
+        public virtual async Task<ActionResult> GetAll([FromQuery] ListShowsQueryDto? listRequestResource, CancellationToken cancellationToken = default)
         {
-            var showEntity = await _showsService.GetAllWithCastSortedAsync(cancellationToken);
+            listRequestResource ??= new ListShowsQueryDto();
+            
+            var listRequest = _showsQueryBuilder.Build(listRequestResource);
+
+
+            var showEntity = await _showsService.GetAllWithCastSortedAsync(listRequest, cancellationToken);
 
             var result = Mapper.Map<IList<ShowDto>>(showEntity);
 

@@ -16,6 +16,14 @@ namespace TvMaze.Domain.Persistence
 
     public class SortItem<TEntity>
     {
+        public SortItem() { }
+
+        public SortItem(SortDirectionEnum sortDirection, Expression<Func<TEntity, object>> sortField)
+        {
+            SortDirection = SortDirection;
+            SortField = SortField;
+        }
+
         public SortDirectionEnum SortDirection { get; set; }
         public Expression<Func<TEntity, object>> SortField { get; set; }
     }
