@@ -33,8 +33,8 @@ public class ScraperService : IScraperService
             show.Casts = castList;
         }
 
-        await _showsService.SaveShowsAsync(allShows, cancellationToken);
+        var insertResponse = await _showsService.SaveShowsAsync(allShows, cancellationToken);
 
-        return true;
+        return insertResponse.Any();
     }
 }

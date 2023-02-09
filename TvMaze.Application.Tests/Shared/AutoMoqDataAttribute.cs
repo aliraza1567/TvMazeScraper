@@ -1,10 +1,6 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
-using AutoFixture.Kernel;
 using AutoFixture.Xunit2;
-using System.Reflection;
-using Xunit.Extensions;
-using Xunit.Sdk;
 
 namespace TvMaze.Application.Tests.Shared
 {

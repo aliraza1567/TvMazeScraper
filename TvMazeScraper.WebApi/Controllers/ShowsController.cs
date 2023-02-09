@@ -20,21 +20,30 @@ namespace TvMazeScraper.WebApi.Controllers
 
         [HttpGet("GetAllShows")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(List<ShowDto>))]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public virtual async Task<ActionResult> GetAll(CancellationToken cancellationToken = default)
         {
             var showEntity = await _showsService.GetAllWithCastSortedAsync(cancellationToken);
 
             var result = Mapper.Map<IList<ShowDto>>(showEntity);
+
+            if (!result.Any())
+                return NotFound();
+
             return Ok(result);
         }
 
         [HttpGet("GetByShowId")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ShowDto))]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Get(int showId, CancellationToken cancellationToken = default)
         {
             var showEntity = await _showsService.GetByShowIdAsync(showId, cancellationToken);
 
             var result = Mapper.Map<ShowDto>(showEntity);
+            
+            if (result == null)
+                return NotFound();
             return Ok(result);
         }
     }

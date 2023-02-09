@@ -24,7 +24,8 @@ namespace TvMaze.Application.Services
         {
             var result = await _showsRepository.GetByShowIdAsync(showId, cancellationToken);
 
-            result.Casts = result.Casts.OrderByDescending(cast => cast.Birthday).ToList();
+            if(result != null)
+                result.Casts = result.Casts.OrderByDescending(cast => cast.Birthday).ToList();
 
             return result;
         }
@@ -80,14 +81,16 @@ namespace TvMaze.Application.Services
             return allShows;
         }
 
-        public async Task SaveShowsAsync(List<Show> allShows ,CancellationToken cancellationToken)
+        public async Task<EntityInsertResponse<Show>> SaveShowsAsync(List<Show> allShows, CancellationToken cancellationToken)
         {
             var entityInsertRequest = new EntityInsertRequest<Show>
             {
                 EntitiesToInsert = allShows
             };
 
-            await _showsRepository.BulkInsertAsync(entityInsertRequest, cancellationToken);
+            var response = await _showsRepository.BulkInsertAsync(entityInsertRequest, cancellationToken);
+            
+            return response;
         }
     }
 }

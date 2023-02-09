@@ -15,11 +15,10 @@ namespace TvMaze.Persistence.Repositories
 
         public async Task<Show> GetByShowIdAsync(int showId, CancellationToken cancellationToken)
         {
-            var query = UnitOfWork.Entities<Show>();
+            var query = Queryable
+                .Include(x => x.Casts);
 
-            return await query.AsNoTracking().Include(show => show.Casts)
-                       .FirstOrDefaultAsync(e => e.ShowId == showId, cancellationToken: cancellationToken) ??
-                   throw new InvalidOperationException();
+            return await query.AsNoTracking().FirstOrDefaultAsync(e => e.ShowId == showId, cancellationToken);
         }
     }
 }

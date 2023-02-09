@@ -33,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A3F9B516-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMazeScraper.WebApi.Integration.Tests", "TvMazeScraper.WebApi.Integration.Tests\TvMazeScraper.WebApi.Integration.Tests.csproj", "{11A1FDB7-05EA-4C58-9326-8D6FDC8D252B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Application.Tests", "TvMaze.Application.Tests\TvMaze.Application.Tests.csproj", "{1E0C768E-397A-47B0-9A0B-221DEA792169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMaze.Application.Tests", "TvMaze.Application.Tests\TvMaze.Application.Tests.csproj", "{1E0C768E-397A-47B0-9A0B-221DEA792169}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

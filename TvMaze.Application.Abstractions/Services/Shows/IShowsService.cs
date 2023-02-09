@@ -1,4 +1,5 @@
 ﻿using TvMaze.Domain.Models;
+using TvMaze.Domain.Persistence;
 
 namespace TvMaze.Application.Abstractions.Services.Shows
 {
@@ -8,6 +9,6 @@ namespace TvMaze.Application.Abstractions.Services.Shows
         Task<Show> GetByShowIdAsync(int showId, CancellationToken cancellationToken);
         Task<IList<Show>> GetAllWithCastSortedAsync(CancellationToken cancellationToken);
         Task<IList<Show>> GetAllShowAsync(CancellationToken cancellationToken);
-        Task SaveShowsAsync(List<Show> allShows, CancellationToken cancellationToken);
+        Task<EntityInsertResponse<Show>> SaveShowsAsync(List<Show> allShows, CancellationToken cancellationToken);
     }
 }

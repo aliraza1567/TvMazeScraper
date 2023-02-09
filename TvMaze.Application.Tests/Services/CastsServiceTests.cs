@@ -1,11 +1,9 @@
 using AutoFixture.Xunit2;
 using FluentAssertions;
-using FluentAssertions.Common;
 using Moq;
 using TvMaze.Application.Services;
 using TvMaze.Application.Tests.Shared;
 using TvMaze.Domain.Models;
-using TvMaze.Domain.Persistence;
 using TvMaze.Persistence.Abstractions.Repositories;
 
 namespace TvMaze.Application.Tests.Services
