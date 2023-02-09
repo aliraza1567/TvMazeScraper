@@ -22,7 +22,7 @@ namespace TvMazeScraper.WebApi.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(List<ShowDto>))]
         public virtual async Task<ActionResult> GetAll(CancellationToken cancellationToken = default)
         {
-            var showEntity = await _showsService.GetAll(cancellationToken);
+            var showEntity = await _showsService.GetAllWithCastSorted(cancellationToken);
 
             var result = Mapper.Map<IList<ShowDto>>(showEntity);
             return Ok(result);

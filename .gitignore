@@ -17,3 +17,4 @@ TvMazeScraper.Infrastructure.Abstractions/bin/
 TvMaze.Domain/bin/
 TvMazeScraper.WebApi.Integration.Tests/obj/
 TvMazeScraper.WebApi.Integration.Tests/bin/
+TvMaze.Persistence.Abstractions/bin/
