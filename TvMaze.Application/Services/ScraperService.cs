@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using TvMaze.Application.Abstractions.Services.Shows;
-using TvMaze.Domain.Models;
-using TvMaze.Domain.Persistence;
+﻿using TvMaze.Application.Abstractions.Services.Shows;
 using TvMaze.Infrastructure.Abstractions.TvMaze.Gateways;
 
 namespace TvMaze.Application.Services;
@@ -24,7 +21,7 @@ public class ScraperService : IScraperService
         var allShows = await mazeClient.GetAllShowsAsync(cancellationToken);
 
         //Check if show already exist
-        var existingShows = await _showsService.GetAllShow(cancellationToken);
+        var existingShows = await _showsService.GetAllShowAsync(cancellationToken);
         var saveableShows = allShows.Where(show => existingShows.All(existingShow => existingShow.ShowId != show.ShowId)).ToList();
 
         if (!saveableShows.Any()) 
@@ -36,7 +33,7 @@ public class ScraperService : IScraperService
             show.Casts = castList;
         }
 
-        await _showsService.SaveShows(allShows, cancellationToken);
+        await _showsService.SaveShowsAsync(allShows, cancellationToken);
 
         return true;
     }

@@ -22,14 +22,14 @@ namespace TvMaze.Application.Services
 
         public async Task<Show> GetByShowIdAsync(int showId, CancellationToken cancellationToken)
         {
-            var result = await _showsRepository.SingleOrDefaultAsync(show => show.ShowId == showId, cancellationToken);
+            var result = await _showsRepository.GetByShowIdAsync(showId, cancellationToken);
 
             result.Casts = result.Casts.OrderByDescending(cast => cast.Birthday).ToList();
 
             return result;
         }
 
-        public async Task<IList<Show>> GetAllWithCastSorted(CancellationToken cancellationToken)
+        public async Task<IList<Show>> GetAllWithCastSortedAsync(CancellationToken cancellationToken)
         {
             var findRequest = new EntityListRequest<Show>
             {
@@ -57,7 +57,7 @@ namespace TvMaze.Application.Services
             return allShows;
         }
 
-        public async Task<IList<Show>> GetAllShow(CancellationToken cancellationToken)
+        public async Task<IList<Show>> GetAllShowAsync(CancellationToken cancellationToken)
         {
             var findRequest = new EntityListRequest<Show>
             {
@@ -80,7 +80,7 @@ namespace TvMaze.Application.Services
             return allShows;
         }
 
-        public async Task SaveShows(List<Show> allShows ,CancellationToken cancellationToken)
+        public async Task SaveShowsAsync(List<Show> allShows ,CancellationToken cancellationToken)
         {
             var entityInsertRequest = new EntityInsertRequest<Show>
             {

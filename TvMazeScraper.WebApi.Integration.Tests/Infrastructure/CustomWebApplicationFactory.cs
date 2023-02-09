@@ -1,13 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Moq;
 using TvMaze.External.Clients;
 using TvMaze.Persistence.EntityFramework;

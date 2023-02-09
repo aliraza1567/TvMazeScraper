@@ -11,13 +11,15 @@ namespace TvMaze.Persistence.Repositories
         {
         }
 
-        public override IQueryable<Show> GetQueryable => Queryable.Include(x => x.Casts);
-
         public override IQueryable<Show> ListQueryable => Queryable.Include(x => x.Casts);
 
         public async Task<Show> GetByShowIdAsync(int showId, CancellationToken cancellationToken)
         {
-            return await GetQueryable.AsNoTracking().Where(e => e.ShowId == showId).FirstOrDefaultAsync(cancellationToken) ?? throw new InvalidOperationException();
+            var query = UnitOfWork.Entities<Show>();
+
+            return await query.AsNoTracking().Include(show => show.Casts)
+                       .FirstOrDefaultAsync(e => e.ShowId == showId, cancellationToken: cancellationToken) ??
+                   throw new InvalidOperationException();
         }
     }
 }

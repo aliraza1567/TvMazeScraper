@@ -1,5 +1,4 @@
-﻿using System.Net;
-using AutoMapper;
+﻿using AutoMapper;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using TvMaze.Domain.Models;
