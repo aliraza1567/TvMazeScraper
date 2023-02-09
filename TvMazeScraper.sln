@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{30795911-6AD9-485E-976D-B262AA945C3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMazeScraper.WebApi", "TvMazeScraper.WebApi\TvMazeScraper.WebApi.csproj", "{D84696A4-EC05-442A-A351-FA87628933DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMazeScraper.WebApi", "TvMazeScraper.WebApi\TvMazeScraper.WebApi.csproj", "{D84696A4-EC05-442A-A351-FA87628933DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{05E4CAF5-5AC3-446F-B0A7-AD380D7243AC}"
 EndProject
@@ -13,21 +13,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Abstractions", "Abstractions", "{F7009165-1C99-41AA-85ED-44735C6AE0FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Infrastructure.Abstractions", "TvMazeScraper.Infrastructure.Abstractions\TvMaze.Infrastructure.Abstractions.csproj", "{54C9E4EC-912D-4E79-9DB9-F4C4551E621E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMaze.Infrastructure.Abstractions", "TvMazeScraper.Infrastructure.Abstractions\TvMaze.Infrastructure.Abstractions.csproj", "{54C9E4EC-912D-4E79-9DB9-F4C4551E621E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{F24DF618-C67F-432D-B756-2F5F78D481DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Domain", "TvMaze.Domain\TvMaze.Domain.csproj", "{F5070884-F094-4612-9641-9E02ABE84145}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMaze.Domain", "TvMaze.Domain\TvMaze.Domain.csproj", "{F5070884-F094-4612-9641-9E02ABE84145}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Persistence", "TvMaze.Persistence\TvMaze.Persistence.csproj", "{976BB033-5EB8-4E8E-B381-3C55E75E5F80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMaze.Persistence", "TvMaze.Persistence\TvMaze.Persistence.csproj", "{976BB033-5EB8-4E8E-B381-3C55E75E5F80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Persistence.Abstractions", "TvMaze.Persistence.Abstractions\TvMaze.Persistence.Abstractions.csproj", "{06F03243-4E51-4302-9D85-7D49EF96F3C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMaze.Persistence.Abstractions", "TvMaze.Persistence.Abstractions\TvMaze.Persistence.Abstractions.csproj", "{06F03243-4E51-4302-9D85-7D49EF96F3C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Application", "TvMaze.Application\TvMaze.Application.csproj", "{3259FF25-1B97-43EF-9AAF-F2F6873C8767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMaze.Application", "TvMaze.Application\TvMaze.Application.csproj", "{3259FF25-1B97-43EF-9AAF-F2F6873C8767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.Application.Abstractions", "TvMaze.Application.Abstractions\TvMaze.Application.Abstractions.csproj", "{660383E2-429B-4B82-9B3D-7AE18A38B040}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMaze.Application.Abstractions", "TvMaze.Application.Abstractions\TvMaze.Application.Abstractions.csproj", "{660383E2-429B-4B82-9B3D-7AE18A38B040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMaze.External", "TvMaze.External\TvMaze.External.csproj", "{47ECE668-FA30-4125-B638-A03DCFDD48AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TvMaze.External", "TvMaze.External\TvMaze.External.csproj", "{47ECE668-FA30-4125-B638-A03DCFDD48AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A3F9B516-2660-4238-AC18-6A2636DD3E3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvMazeScraper.WebApi.Integration.Tests", "TvMazeScraper.WebApi.Integration.Tests\TvMazeScraper.WebApi.Integration.Tests.csproj", "{11A1FDB7-05EA-4C58-9326-8D6FDC8D252B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +71,10 @@ Global
 		{47ECE668-FA30-4125-B638-A03DCFDD48AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47ECE668-FA30-4125-B638-A03DCFDD48AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47ECE668-FA30-4125-B638-A03DCFDD48AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11A1FDB7-05EA-4C58-9326-8D6FDC8D252B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11A1FDB7-05EA-4C58-9326-8D6FDC8D252B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11A1FDB7-05EA-4C58-9326-8D6FDC8D252B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11A1FDB7-05EA-4C58-9326-8D6FDC8D252B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +89,7 @@ Global
 		{3259FF25-1B97-43EF-9AAF-F2F6873C8767} = {05E4CAF5-5AC3-446F-B0A7-AD380D7243AC}
 		{660383E2-429B-4B82-9B3D-7AE18A38B040} = {F7009165-1C99-41AA-85ED-44735C6AE0FB}
 		{47ECE668-FA30-4125-B638-A03DCFDD48AC} = {09B38E55-6317-4F09-9B24-AD714ED06C32}
+		{11A1FDB7-05EA-4C58-9326-8D6FDC8D252B} = {A3F9B516-2660-4238-AC18-6A2636DD3E3E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB599B07-B7F8-47F3-A81B-293256F6B011}
