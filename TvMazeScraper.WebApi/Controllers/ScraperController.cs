@@ -8,13 +8,11 @@ namespace TvMazeScraper.WebApi.Controllers
     {
         private readonly ILogger<ScraperController> _logger;
         private readonly IScraperService _scraperService;
-        private readonly IServiceProvider _serviceProvider;
 
         public ScraperController(ILogger<ScraperController> logger, IScraperService scraperService, IServiceProvider serviceProvider)
         {
             _logger = logger;
             _scraperService = scraperService;
-            _serviceProvider = serviceProvider;
         }
 
         [HttpGet("DirectScraping")]

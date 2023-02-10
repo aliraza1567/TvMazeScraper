@@ -25,23 +25,6 @@ namespace TvMazeScraper.WebApi.Queries.Shows
                 }
             };
 
-            for (var index = 0; index < listQuery.SortFields.Count; index++)
-            {
-                var sortField = listQuery.SortFields[index];
-                var sortDirectionDto = listQuery.SortDirections.ElementAtOrDefault(index);
-                var sortDirection = _mapper.Map<SortDirectionEnum>(sortDirectionDto);
-
-                //ShowId
-                if (sortField is nameof(Show.ShowId))
-                {
-                    listRequest.Sorting.SortItems.Add(new SortItem<Show>
-                    {
-                        SortField = entity => entity.ShowId,
-                        SortDirection = sortDirection
-                    });
-                }
-            }
-
             return listRequest;
         }
     }

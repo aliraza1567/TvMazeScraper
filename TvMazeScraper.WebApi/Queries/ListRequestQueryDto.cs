@@ -12,8 +12,6 @@
             OnlyCount = false;
             _skip = 0;
             _take = DefaultLimit;
-            SortFields = new List<string>();
-            SortDirections = new List<SortDirectionEnumDto>();
         }
 
         public bool OnlyCount { get; set; }
@@ -40,14 +38,5 @@
             }
         }
 
-        public IList<string> SortFields { get; set; }
-
-        public IList<SortDirectionEnumDto> SortDirections { get; set; }
-
-    }
-    public enum SortDirectionEnumDto
-    {
-        Ascending,
-        Descending
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using TvMaze.Application.Abstractions.Services.Shows;
+using TvMaze.Domain.Models;
+using TvMaze.Domain.Persistence;
 using TvMaze.Infrastructure.Abstractions.TvMaze.Gateways;
 
 namespace TvMaze.Application.Services;
@@ -19,13 +21,17 @@ public class ScraperService : IScraperService
 
     public async Task<bool> ShowAndCastScraperAsync(CancellationToken cancellationToken)
     {
+        _logger.LogInformation($"DirectScraping Started At: {DateTime.Now}");
+
         var mazeClient = await _tvMazeGateway.GetTvMazeClientAsync(cancellationToken);
 
         var allShows = await mazeClient.GetAllShowsAsync(cancellationToken);
 
         //Check if show already exist
-        var existingShows = await _showsService.GetAllShowAsync(cancellationToken);
-        var saveableShows = allShows.Where(show => existingShows.All(existingShow => existingShow.ShowId != show.ShowId)).ToList();
+        var request = new EntityListRequest<Show>(e => e.ShowId, SortDirectionEnum.Ascending);
+        var existingShows = await _showsService.GetAllShowAsync(request, cancellationToken);
+
+        var saveableShows = allShows.Where(show => existingShows.Results.All(existingShow => existingShow.ShowId != show.ShowId)).ToList();
 
         if (!saveableShows.Any()) 
             return true;
@@ -45,6 +51,8 @@ public class ScraperService : IScraperService
             _logger.LogCritical($"Error while saving data, Exception: {e}");
             return false;
         }
+
+        _logger.LogInformation($"DirectScraping Started At: {DateTime.Now}");
 
         return true;
     }

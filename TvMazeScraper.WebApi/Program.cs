@@ -2,7 +2,6 @@ using NLog;
 using NLog.Web;
 using TvMaze.Persistence;
 using TvMazeScraper.WebApi.Queries;
-using TvMazeScraper.WebApi.Queries.Shows;
 
 namespace TvMazeScraper.WebApi
 {
@@ -28,24 +27,19 @@ namespace TvMazeScraper.WebApi
                 builder.Logging.ClearProviders();
                 builder.Host.UseNLog();
 
-
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
 
-                
                 builder.Services.AddAutoMapper(typeof(Program).Assembly);
                 builder.Services.AddCompositionRootServices(Configuration, typeof(Startup).Assembly);
 
-                //HostedService
-                //builder.Services.AddHostedService<DataScraperHostedService>();
-
                 builder.Services.AddQueryBuilders(Configuration);
 
+                builder.Services.AccompanyingHostedService(Configuration);
 
                 var app = builder.Build();
 
-                
                 // Configure the HTTP request pipeline.
                 if (app.Environment.IsDevelopment())
                 {

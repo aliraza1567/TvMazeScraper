@@ -1,8 +1,9 @@
-﻿namespace TvMazeScraper.WebApi.Contracts.Shows
+﻿using TvMazeScraper.WebApi.Queries;
+
+namespace TvMazeScraper.WebApi.Contracts.Shows
 {
-    public class ShowDto
+    public class ShowDto: IResource<int>
     {
-        public Guid Id { get; set; }
         public int ShowId { get; set; }
         public string Url { get; set; }
         public string Name { get; set; }

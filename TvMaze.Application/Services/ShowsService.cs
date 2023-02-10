@@ -43,14 +43,16 @@ namespace TvMaze.Application.Services
             return allShows;
         }
 
-        public async Task<IList<Show>> GetAllShowAsync(CancellationToken cancellationToken)
+        public async Task<EntityListResponse<Show>> GetAllShowAsync(EntityListRequest<Show> listRequest, CancellationToken cancellationToken)
         {
-            var listRequest = new EntityListRequest<Show>(e => e.ShowId, SortDirectionEnum.Ascending);
-
             var entityListResponse = await _showsRepository.ListAsync(listRequest, cancellationToken);
-            var allShows = entityListResponse.Results.ToList();
 
-            return allShows;
+            entityListResponse.Results.ToList().ForEach(show =>
+            {
+                show.Casts = show.Casts.OrderByDescending(cast => cast.Birthday).ToList();
+            });
+
+            return entityListResponse ?? EntityListResponse<Show>.Empty;
         }
 
         public async Task<EntityInsertResponse<Show>> SaveShowsAsync(List<Show> allShows, CancellationToken cancellationToken)

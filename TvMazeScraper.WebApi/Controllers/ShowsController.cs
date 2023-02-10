@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using TvMaze.Application.Abstractions.Services.Shows;
+using TvMaze.Domain.Models;
+using TvMaze.Domain.Persistence;
 using TvMazeScraper.WebApi.Contracts.Shows;
+using TvMazeScraper.WebApi.Queries;
 using TvMazeScraper.WebApi.Queries.Shows;
 
 namespace TvMazeScraper.WebApi.Controllers
@@ -21,15 +24,12 @@ namespace TvMazeScraper.WebApi.Controllers
             _showsQueryBuilder = showsQueryBuilder;
         }
 
-        [HttpGet("GetAllShows")]
+        [HttpGet("GetAllShowsCastSorted")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(List<ShowDto>))]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public virtual async Task<ActionResult> GetAll([FromQuery] ListShowsQueryDto? listRequestResource, CancellationToken cancellationToken = default)
+        public virtual async Task<ActionResult> GetAllCastSorted(CancellationToken cancellationToken = default)
         {
-            listRequestResource ??= new ListShowsQueryDto();
-            
-            var listRequest = _showsQueryBuilder.Build(listRequestResource);
-
+            var listRequest = new EntityListRequest<Show>(e => e.ShowId, SortDirectionEnum.Ascending);
 
             var showEntity = await _showsService.GetAllWithCastSortedAsync(listRequest, cancellationToken);
 
@@ -40,6 +40,26 @@ namespace TvMazeScraper.WebApi.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("GetAllShows")]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(List<ShowDto>))]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public virtual async Task<ActionResult> GetAll([FromQuery] ListShowsQueryDto? listRequestResource, CancellationToken cancellationToken = default)
+        {
+            listRequestResource ??= new ListShowsQueryDto();
+
+            var listRequest = _showsQueryBuilder.Build(listRequestResource);
+
+            var listResult = await _showsService.GetAllShowAsync(listRequest, cancellationToken);
+
+            var listResponseResource = Mapper.Map<ListResponseDto<ShowDto>>(listResult);
+
+            if (listResponseResource.ResultCount < 0)
+                return NotFound();
+
+            return Ok(listResponseResource);
+        }
+
 
         [HttpGet("GetByShowId")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ShowDto))]
