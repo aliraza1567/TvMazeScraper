@@ -13,6 +13,6 @@ SQL folder (Run in sequence). 3-Enable Snapshot script needs to be run in both c
 There is no Authentication implemented
 
 There are two ways to scrape data one is from API (DirectScraping API call) and other one is by hosted worker. 
-Hosted worker is commented out for now (In TvMazeScraper.WebApi/HostedServiceExtensions), it will run in background on apppliaction startup once for now once enabled.
+Hosted worker is commented out for now (In TvMazeScraper.WebApi/HostedServiceExtensions), it will run in background on apppliaction startup once, if enabled
 
-API can be tested with swagger page also but i have included Postman export files it can used as well, it is in Postman folder (Import both files one is envirnment variable and othe calls collection)
+API can be tested with swagger page (Swagger is taking lot of time to load data, if query fro big collection) but i have included Postman export files it can used as well, it is in Postman folder (Import both files one is envirnment variable and othe calls collection)

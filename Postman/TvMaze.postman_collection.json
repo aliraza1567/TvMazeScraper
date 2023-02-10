@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "270ccabc-fe85-4cf6-9b4b-58e9c0052402",
+		"name": "TvMaze",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2848653"
+	},
+	"item": [
+		{
+			"name": "GetByShowId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/Shows/GetByShowId?showId=1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Shows",
+						"GetByShowId"
+					],
+					"query": [
+						{
+							"key": "showId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllShowsCastSorted",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/Shows/GetAllShowsCastSorted",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Shows",
+						"GetAllShowsCastSorted"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllShows (Get Only Count Back)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/Shows/GetAllShows?OnlyCount=true",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Shows",
+						"GetAllShows"
+					],
+					"query": [
+						{
+							"key": "OnlyCount",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllShows (Take 2)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/Shows/GetAllShows?OnlyCount=false&Take=2",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Shows",
+						"GetAllShows"
+					],
+					"query": [
+						{
+							"key": "OnlyCount",
+							"value": "false"
+						},
+						{
+							"key": "Take",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllShows (Skip 2)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/Shows/GetAllShows?OnlyCount=false&Skip=2",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Shows",
+						"GetAllShows"
+					],
+					"query": [
+						{
+							"key": "OnlyCount",
+							"value": "false"
+						},
+						{
+							"key": "Take",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "Skip",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data From TvMaze API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/DirectScraping",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"DirectScraping"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
