@@ -19,8 +19,10 @@ namespace TvMaze.Application.Tests.Services
             castsRepositoryMock.Setup(x => x.GetAsync(It.Is<Guid>(s => s == id), token))
                 .Returns(Task.FromResult(cast)).Verifiable();
 
+            // Act
             var result = await castsService.GetAsync(id, token);
 
+            // Assert
             castsRepositoryMock.Verify();
             result.Should().Be(cast);
         }

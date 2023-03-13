@@ -33,6 +33,7 @@ namespace TvMaze.Application.Services
         public async Task<IList<Show>> GetAllWithCastSortedAsync(EntityListRequest<Show> listRequest, CancellationToken cancellationToken)
         {
            var entityListResponse = await _showsRepository.ListAsync(listRequest, cancellationToken);
+
             var allShows = entityListResponse.Results.ToList();
 
             allShows.ForEach(show =>
@@ -47,10 +48,11 @@ namespace TvMaze.Application.Services
         {
             var entityListResponse = await _showsRepository.ListAsync(listRequest, cancellationToken);
 
-            entityListResponse.Results.ToList().ForEach(show =>
-            {
-                show.Casts = show.Casts.OrderByDescending(cast => cast.Birthday).ToList();
-            });
+            if(entityListResponse.ResultCount > 0)
+                entityListResponse.Results.ToList().ForEach(show =>
+                {
+                    show.Casts = show.Casts.OrderByDescending(cast => cast.Birthday).ToList();
+                });
 
             return entityListResponse ?? EntityListResponse<Show>.Empty;
         }
